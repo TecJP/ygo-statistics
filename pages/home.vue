@@ -6,13 +6,11 @@
       flex flex-col
       sm:w-screen sm:h-full
       text-left
-      py-0
-      px-0
       bg-gray-700
     "
   >
-    <Navbar />
-    <div class="w-full h-full sm:w-1/3 sm:h-screen px-4 mb-6">
+    <Navbar @signOut="signOut" />
+    <div class="w-full h-full sm:w-1/3 mt-20 sm:h-screen px-4">
       <Statistics />
       <Card
         deckImage="../assets/images/balerdroch.png"

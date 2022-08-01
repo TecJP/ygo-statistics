@@ -3,13 +3,15 @@
     class="
       bg-gray-900
       w-full
-      sm:w-1/3
-      h-1/5
+      h-20
+      sm:w-1/3 sm:h-20
       px-4
       py-4
       flex
       items-center
       justify-between
+      fixed
+      top-0
     "
   >
     <div class="flex items-center justify-center">
@@ -20,7 +22,7 @@
       />
       <h1 class="ml-4 text-xl">João Pedro</h1>
     </div>
-    <button class="rounded-full bg-gray-300 p-2 text-black" @click="signOut">
+    <button class="rounded-full bg-gray-300 p-2 text-black" @click="$emit('signOut')">
       Sair
     </button>
   </div>

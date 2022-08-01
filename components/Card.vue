@@ -19,7 +19,7 @@ function sumValues(wins, loses) {
       bg-gray-200
       text-black
       mt-4
-      mb-2
+      mb-4
       rounded-xl
       flex flex-row
       items-center
