@@ -27,7 +27,7 @@
           class="w-full h-12 text-black mb-4 rounded-md shadow-md px-4"
           type="text"
           placeholder="Nome"
-          v-model="form.userName"
+          v-model="form.user_name"
         />
         <input
           class="w-full h-12 text-black mb-4 rounded-md shadow-md px-4"
@@ -71,26 +71,27 @@
 <script setup>
 const supabase = useSupabaseClient();
 const router = useRouter();
-
-// const { logUp, createUser } = useAuthUser();
+const loading = ref(false);
 
 const form = ref({
   email: "",
-  userName: "",
+  user_name: "",
   password: "",
 });
-const loading = ref(false);
 
-// async function handleSubmit() {
-//   try {
-//     loading.value = true;
-//     await logUp(form.value);
-//     await createUser(form.value);
-//     router.push("/");
-//   } catch (error) {
-//     alert(error.message);
-//   } finally {
-//     loading.value = false;
-//   }
-// }
+async function handleSignUp() {
+  try {
+    loading.value = true;
+    const { email, password, user_name } = form.value;
+    const { user, error } = await supabase.auth.signUp({ email, password });
+    if (error) throw error;
+    console.log(user);
+    router.push("/home");
+    return user;
+  } catch (error) {
+    alert(error.message);
+  } finally {
+    loading.value = false;
+  }
+}
 </script>

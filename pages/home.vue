@@ -34,14 +34,19 @@
   </div>
 </template>
 <script setup>
-// const supabase = useSupabaseClient();
+definePageMeta({
+  middleware: ["auth"],
+});
+const supabase = useSupabaseClient();
 const router = useRouter();
-// const loading = ref(false);
-// const user = useUser();
-
-// console.log(supabase.auth.session());
 
 async function signOut() {
-  router.push("/");
+  try {
+    const { error } = await supabase.auth.signOut();
+    if (error) throw error;
+    router.push("/");
+  } catch (error) {
+    alert(error.message);
+  }
 }
 </script>

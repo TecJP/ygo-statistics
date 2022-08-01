@@ -12,9 +12,10 @@ datasource db {
 
 model Deck {
   id        Int      @id @default(autoincrement())
-  deckName  String
+  deckName  String   @map("deck_name")
   wins      Int
   loses     Int
+  deckList  String[] @map("deck_list")
   owner     User?    @relation(fields: [ownerId], references: [id])
   ownerId   Int?
   createdAt DateTime @default(now()) @map("created_at")
@@ -26,8 +27,7 @@ model Deck {
 model User {
   id        Int      @id @default(autoincrement())
   email     String   @unique
-  userName  String?
-  password  String?
+  userName  String?  @map("user_name")
   decks     Deck[]
   createdAt DateTime @default(now()) @map("created_at")
   updatedAt DateTime @default(now()) @map("updated_at")

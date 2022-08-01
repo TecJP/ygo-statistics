@@ -1,7 +1,7 @@
 <template>
   <div class="flex justify-center items-center text-left px-6 py-6 bg-gray-700">
     <div class="h-screen w-full sm:w-1/3">
-      <form @submit.prevent="">
+      <form @submit.prevent="handleSignIn">
         <h1 class="w-full text-white mt-8 mb-12 sm:mt-4 sm:mb-8 text-2xl">
           Duelist Statistics
         </h1>
@@ -55,16 +55,27 @@
 </template>
 
 <script setup>
-// const supabase = useSupabaseClient();
+const supabase = useSupabaseClient();
 const router = useRouter();
+const loading = ref(false);
 
 const form = ref({
   email: "",
   password: "",
 });
-const loading = ref(false);
 
-async function toHome() {
-  router.push("/home");
+async function handleSignIn() {
+  try {
+    loading.value = true;
+    const { email, password } = form.value;
+    const { user, error } = await supabase.auth.signIn({ email, password });
+    if (error) throw error;
+    router.push("/home");
+    return user;
+  } catch (error) {
+    alert(error.message);
+  } finally {
+    loading.value = false;
+  }
 }
 </script>

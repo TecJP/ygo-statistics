@@ -1,9 +1,10 @@
 -- CreateTable
 CREATE TABLE "decks" (
     "id" SERIAL NOT NULL,
-    "deckName" TEXT NOT NULL,
+    "deck_name" TEXT NOT NULL,
     "wins" INTEGER NOT NULL,
     "loses" INTEGER NOT NULL,
+    "deck_list" TEXT[],
     "ownerId" INTEGER,
     "created_at" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updated_at" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -15,8 +16,7 @@ CREATE TABLE "decks" (
 CREATE TABLE "users" (
     "id" SERIAL NOT NULL,
     "email" TEXT NOT NULL,
-    "userName" TEXT,
-    "password" TEXT,
+    "user_name" TEXT,
     "created_at" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updated_at" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
 
