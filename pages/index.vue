@@ -37,7 +37,7 @@
               text-black
               mt-4
               mb-4
-              bg-gray-200
+              bg-[#BDBDBD]
             "
             :disabled="loading"
           >

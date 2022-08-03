@@ -3,7 +3,7 @@
     class="
       h-screen
       w-screen
-      bg-gray-700
+      bg-[#4F4F4F]
       text-white
       flex
       justify-center

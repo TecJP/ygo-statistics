@@ -9,8 +9,8 @@
       bg-gray-700
     "
   >
-    <Navbar @signOut="signOut" />
-    <div class="w-full h-full sm:w-1/3 mt-20 sm:h-screen px-4">
+    <Navbar />
+    <div class="w-full h-full sm:w-1/3 mt-28 sm:h-screen px-4">
       <Statistics />
       <Card
         deckImage="../assets/images/balerdroch.png"
@@ -39,14 +39,4 @@ definePageMeta({
 });
 const supabase = useSupabaseClient();
 const router = useRouter();
-
-async function signOut() {
-  try {
-    const { error } = await supabase.auth.signOut();
-    if (error) throw error;
-    router.push("/");
-  } catch (error) {
-    alert(error.message);
-  }
-}
 </script>

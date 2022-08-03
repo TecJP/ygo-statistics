@@ -23,6 +23,11 @@ export default defineNuxtConfig({
         component: '@pages/home.vue',
 
       },
+      {
+        name: 'profile',
+        path: '/profile',
+        component: '@pages/profile.vue'
+      },
     ],
   },
   build: {

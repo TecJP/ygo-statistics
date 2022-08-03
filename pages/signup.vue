@@ -52,7 +52,7 @@
               text-black
               mt-4
               mb-6
-              bg-gray-200
+              bg-[#BDBDBD]
             "
             :disabled="loading"
           >
@@ -83,10 +83,16 @@ async function handleSignUp() {
   try {
     loading.value = true;
     const { email, password, user_name } = form.value;
-    const { user, error } = await supabase.auth.signUp({ email, password });
+    const { user, error } = await supabase.auth.signUp(
+      { email, password },
+      {
+        data: {
+          user_name,
+        },
+      }
+    );
     if (error) throw error;
-    console.log(user);
-    router.push("/home");
+    router.push("/profile");
     return user;
   } catch (error) {
     alert(error.message);
