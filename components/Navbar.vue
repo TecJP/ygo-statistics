@@ -23,7 +23,7 @@
         src="../assets/images/joao_pedro.jpg"
         alt="João Pedro"
         class="rounded-full w-16 h-16"
-        @click="$emit(router.push('/profile'))"
+        @click="navigateToProfile"
       />
     </div>
   </div>
@@ -32,4 +32,8 @@
 const supabase = useSupabaseClient();
 const router = useRouter();
 const { user_metadata } = supabase.auth.user();
+
+function navigateToProfile() {
+  router.push("/profile");
+}
 </script>
