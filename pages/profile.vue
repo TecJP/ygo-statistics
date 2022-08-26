@@ -32,21 +32,54 @@
       </button>
     </div>
     <div class="w-full h-full mt-4 flex flex-col items-center">
-      <img
-        src="../assets/images/joao_pedro.jpg"
-        alt="João Pedro"
-        class="rounded-full w-48 h-48 mb-4"
-      />
-      <input
-        class="w-full h-12 text-black mb-4 rounded-md shadow-md px-4"
-        type="text"
-        v-model="user.user_metadata.user_name"
-      />
-      <input
-        class="w-full h-12 text-black mb-4 rounded-md shadow-md px-4"
-        type="email"
-        v-model="user.email"
-      />
+      <form
+        class="w-full h-full flex flex-col items-center"
+        @submit.prevent="createUser"
+      >
+        <h1 class="text-lg mb-6">Atualize as suas informações</h1>
+        <img
+          src="../assets/images/joao_pedro.jpg"
+          alt="João Pedro"
+          class="rounded-full w-48 h-48 mb-4"
+          v-if="user.user_metadata.avatar_url"
+        />
+        <img
+          src="https://icon-library.com/images/default-user-icon/default-user-icon-8.jpg"
+          alt="Default user image"
+          class="rounded-full w-48 h-48 mb-4"
+          v-else
+        />
+        <label class="w-full">
+          Nome
+          <input
+            class="w-full h-12 text-black mt-2 mb-4 rounded-md shadow-md px-4"
+            type="text"
+            v-model="form.user_name"
+          />
+        </label>
+        <label class="w-full">
+          Email
+          <input
+            class="w-full h-12 text-black mt-2 mb-4 rounded-md shadow-md px-4"
+            type="email"
+            v-model="form.email"
+          />
+        </label>
+        <button
+          class="
+            w-full
+            h-12
+            rounded-md
+            shadow-md
+            text-black
+            mt-4
+            mb-6
+            bg-[#BDBDBD]
+          "
+        >
+          Salvar
+        </button>
+      </form>
     </div>
   </div>
 </template>
@@ -58,9 +91,30 @@ definePageMeta({
 const supabase = useSupabaseClient();
 const router = useRouter();
 const user = supabase.auth.user();
+const loading = ref(false);
+const form = ref({
+  user_name: "",
+  email: user.email,
+});
 
 function navigateToHome() {
   router.push("/home");
+}
+
+async function createUser() {
+  try {
+    loading.value = true;
+    const { user_name, email } = form.value;
+    const { data, error } = await supabase
+      .from("users")
+      .insert([{ email: email, user_name: user_name }]);
+    if (error) throw error;
+    console.log(data);
+  } catch (error) {
+    alert(error.message);
+  } finally {
+    loading.value = false;
+  }
 }
 
 async function signOut() {

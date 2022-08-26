@@ -2,7 +2,7 @@
   <div class="w-full mt-4 mb-2 flex flex-col items-center justify-center">
     <h1 class="text-xl">Suas estatísticas</h1>
     <div class="w-full flex flex-row center">
-      <div class="w-full text-sm">
+      <div class="w-full text-sm sm:text-lg">
         <table class="w-full">
           <tr>
             <td>Total de duelos:</td>

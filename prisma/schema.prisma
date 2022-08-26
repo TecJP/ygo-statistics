@@ -13,6 +13,7 @@ datasource db {
 model Deck {
   id        Int      @id @default(autoincrement())
   deckName  String   @map("deck_name")
+  avatarURL String   @map("avatar_url")
   wins      Int
   loses     Int
   deckList  String[] @map("deck_list")
@@ -28,6 +29,7 @@ model User {
   id        Int      @id @default(autoincrement())
   email     String   @unique
   userName  String?  @map("user_name")
+  avatarURL String   @map("avatar_url")
   decks     Deck[]
   createdAt DateTime @default(now()) @map("created_at")
   updatedAt DateTime @default(now()) @map("updated_at")

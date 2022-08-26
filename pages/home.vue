@@ -4,13 +4,17 @@
       h-full
       w-full
       flex flex-col
-      sm:w-screen sm:h-full
+      sm:w-full sm:h-screen
       text-left
       bg-gray-700
+      p-0
+      m-0
     "
   >
     <Navbar />
-    <div class="w-full h-full sm:w-1/3 mt-28 sm:h-screen px-4">
+    <div
+      class="w-full h-full sm:w-full mt-24 sm:mt-28 sm:h-screen px-4 sm:px-24"
+    >
       <Statistics />
       <Card
         deckImage="../assets/images/balerdroch.png"

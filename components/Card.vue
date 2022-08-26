@@ -26,7 +26,7 @@ function sumValues(wins, loses) {
     "
   >
     <img class="w-18 h-32 rounded-l-xl" :src="deckImage" :alt="deckName" />
-    <table class="w-2/3 m-2">
+    <table class="w-full sm:w-full m-2">
       <tr>
         <td>Deck:</td>
         <td class="text-right">{{ deckName }}</td>

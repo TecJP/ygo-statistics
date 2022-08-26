@@ -2,6 +2,7 @@
 CREATE TABLE "decks" (
     "id" SERIAL NOT NULL,
     "deck_name" TEXT NOT NULL,
+    "avatar_url" TEXT NOT NULL,
     "wins" INTEGER NOT NULL,
     "loses" INTEGER NOT NULL,
     "deck_list" TEXT[],
@@ -17,6 +18,7 @@ CREATE TABLE "users" (
     "id" SERIAL NOT NULL,
     "email" TEXT NOT NULL,
     "user_name" TEXT,
+    "avatar_url" TEXT NOT NULL,
     "created_at" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updated_at" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
 

@@ -45,9 +45,12 @@
           </button>
         </div>
         <div class="text-center mt-6 mb-12 sm:mt-4">
-          <NuxtLink to="signup" class="text-center text-white mt-8"
-            >Não tenho cadastro</NuxtLink
-          >
+          <p>
+            Não tenho conta.
+            <NuxtLink to="signup" class="text-center text-white mt-8"
+              >Criar conta!</NuxtLink
+            >
+          </p>
         </div>
       </form>
     </div>

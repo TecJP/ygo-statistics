@@ -25,12 +25,6 @@
         </h1>
         <input
           class="w-full h-12 text-black mb-4 rounded-md shadow-md px-4"
-          type="text"
-          placeholder="Nome"
-          v-model="form.user_name"
-        />
-        <input
-          class="w-full h-12 text-black mb-4 rounded-md shadow-md px-4"
           type="email"
           placeholder="Email"
           v-model="form.email"
@@ -74,20 +68,20 @@ const router = useRouter();
 const loading = ref(false);
 
 const form = ref({
+  userName: "",
   email: "",
-  user_name: "",
   password: "",
 });
 
 async function handleSignUp() {
   try {
     loading.value = true;
-    const { email, password, user_name } = form.value;
-    const { user, error } = await supabase.auth.signUp(
+    const { userName, email, password } = form.value;
+    const { user, error, meta_data } = await supabase.auth.signUp(
       { email, password },
       {
         data: {
-          user_name,
+          meta_data: userName,
         },
       }
     );

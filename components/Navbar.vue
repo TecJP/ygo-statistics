@@ -3,9 +3,10 @@
     class="
       bg-[#333333]
       w-full
-      h-28
-      sm:w-1/3 sm:h-20
+      h-24
+      sm:w-full sm:h-28
       px-4
+      sm:px-24
       py-4
       flex
       items-center
@@ -23,6 +24,7 @@
         src="../assets/images/joao_pedro.jpg"
         alt="João Pedro"
         class="rounded-full w-16 h-16"
+        :style="{ cursor: 'pointer' }"
         @click="navigateToProfile"
       />
     </div>
